@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Data Dashboard{% endblock %}
+{% block head %}
+    <meta name="description" content="Data Dashboard">
+    <meta name="author" content="Charles Pizza">
+    <link href="{{ url_for('static', filename='css/index.css') }}" rel="stylesheet" >
+
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="about">
+        <h1>Scheduling Dash</h1>
+        <h2>Time Commitments Interactive Dashboard</h2>
+        <h2>Author: Charles Pizza</h2>
+        <p>Bio: Charles Pizza, real person, real name, is a Jr. Software Engineer.
+            Fields of passion for Charles include Data Science and Analytics,
+            Machine Learning and Security.</p>
+        <p>This project is focused on providing an interactive dashboard to help
+        visualize and schedule time committments.</p>
+<!--         <h4>The source code is viewable at:</h4>
+ --><!--         <img src="{{ url_for('static', filename='logo.jpg') }}" alt="mylogo image"> -->
+    </div>
+
+    <div class="visualization">
+        <div id="pieChart"></div>
+        <div id="barChart"></div>
+    </div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script>
+        const pieChartDataUrl = "{{ url_for('get_piechart_data') }}";
+        const barChartDataUrl = "{{ url_for('get_barchart_data') }}";
+    </script>
+    <script src="{{ url_for('static', filename='js/pieChart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/barChart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/updateBarChart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
+{% endblock %}
+
